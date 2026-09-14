@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 410" width="300" height="410">
+  <defs>
+    <style>
+      .txt-poder {
+        font-family: 'Times New Roman', 'Liberation Serif', serif;
+        font-size: 36px;
+        font-weight: 700;
+        fill: #06313d;
+        letter-spacing: 0.24em;
+        text-anchor: middle;
+      }
+      .txt-judiciario {
+        font-family: 'Times New Roman', 'Liberation Serif', serif;
+        font-size: 29px;
+        font-weight: 700;
+        fill: #06313d;
+        letter-spacing: 0.12em;
+        text-anchor: middle;
+      }
+      .txt-alagoas {
+        font-family: 'Times New Roman', 'Liberation Serif', serif;
+        font-size: 23px;
+        font-weight: 600;
+        fill: #06313d;
+        letter-spacing: 0.28em;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <!-- Circular Symbol with scale and spire -->
+  <g transform="translate(150, 118)">
+    <!-- Circle Base -->
+    <circle cx="0" cy="0" r="96" fill="#06313d" />
+
+    <!-- 1. Upper Left & Right Negative Space (cuts creating outer crescents) -->
+    <!-- Left cut -->
+    <path d="M -18 -90 C -54 -80 -80 -52 -86 -14 C -64 -24 -40 -26 -18 -26 Z" fill="#ffffff" />
+    <!-- Right cut -->
+    <path d="M 18 -90 C 54 -80 80 -52 86 -14 C 64 -24 40 -26 18 -26 Z" fill="#ffffff" />
+
+    <!-- 2. Lower Arc Channel (separating scales from bottom dark rim) -->
+    <path d="M -84 18 C -56 50 56 50 84 18 C 62 38 -62 38 -84 18 Z" fill="#ffffff" />
+
+    <!-- 3. Left Balance Scale -->
+    <!-- Scale cords from pivot to dish ends -->
+    <line x1="-26" y1="-16" x2="-74" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <line x1="-26" y1="-16" x2="-38" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <!-- Scale dish plate -->
+    <line x1="-76" y1="14" x2="-36" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <path d="M -74 14 Q -56 22 -38 14 Z" fill="#06313d" stroke="#ffffff" stroke-width="2" />
+
+    <!-- 4. Right Balance Scale -->
+    <line x1="26" y1="-16" x2="74" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <line x1="26" y1="-16" x2="38" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <!-- Scale dish plate -->
+    <line x1="76" y1="14" x2="36" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <path d="M 74 14 Q 56 22 38 14 Z" fill="#06313d" stroke="#ffffff" stroke-width="2" />
+
+    <!-- 5. Central Justice Spire Needles -->
+    <!-- Center white slit dividing the two pillars -->
+    <line x1="0" y1="-88" x2="0" y2="20" stroke="#ffffff" stroke-width="3.6" stroke-linecap="round" />
+    <!-- Flanking left slit -->
+    <line x1="-9" y1="-76" x2="-9" y2="20" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" />
+    <!-- Flanking right slit -->
+    <line x1="9" y1="-76" x2="9" y2="20" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" />
+
+    <!-- 6. Bottom Pedestal Flare Cutouts -->
+    <path d="M 0 20 C -10 46 -24 68 -44 84 C -20 76 20 76 44 84 C 24 68 10 46 0 20 Z" fill="#ffffff" />
+    <!-- Central bottom flare (dark) -->
+    <path d="M 0 24 C -6 50 -16 68 -32 80 C -10 72 10 72 32 80 C 16 68 6 50 0 24 Z" fill="#06313d" />
+  </g>
+
+  <!-- Typography Below Circle -->
+  <text x="150" y="270" class="txt-poder">PODER</text>
+  <text x="150" y="310" class="txt-judiciario">JUDICIÁRIO</text>
+  <text x="150" y="348" class="txt-alagoas">DE ALAGOAS</text>
+</svg>

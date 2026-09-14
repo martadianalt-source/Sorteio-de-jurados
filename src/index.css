@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Estilos de Impressão de Alta Fidelidade para Documentos Judiciais do TJAL */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 20mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Oculta tudo que não for o documento imprimível */
+  header,
+  nav,
+  aside,
+  button,
+  input,
+  textarea,
+  .no-print,
+  #modal-tabs-bar,
+  #authorities-config-panel,
+  #modal-actions-bar {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Garante que o backdrop e contêineres externos fiquem transparentes e sem bordas */
+  .fixed,
+  .backdrop-blur-xs,
+  .shadow-2xl,
+  .rounded-xl {
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Torna o documento da ata o foco exclusivo e limpo da impressão */
+  #printable-court-document,
+  .printable-document {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  /* Evita quebras de página inadequadas dentro de tabelas e blocos de assinatura */
+  table {
+    page-break-inside: auto;
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  .signature-block,
+  .hash-verification-box {
+    page-break-inside: avoid;
+  }
+}

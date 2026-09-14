@@ -1,0 +1,6 @@
+{
+  "name": "Sorteio de Jurados - Vara do Único Ofício de São José da Tapera",
+  "description": "Sistema oficial de sorteio eletrônico e auditável de jurados da Vara do Único Ofício de São José da Tapera com exportação da ata oficial em formato .doc.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

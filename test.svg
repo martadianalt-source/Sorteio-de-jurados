@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <!-- Background transparent -->
+  <g fill="#002d38">
+    <!-- Main circular emblem -->
+    <!-- Outer circle masked/cut by negative spaces -->
+    <!-- Upper outer crescents -->
+    <path d="M 150 20 C 85 20 32 68 28 132 C 48 118 78 108 112 104 C 105 70 124 38 150 20 Z" />
+    <path d="M 150 20 C 215 20 268 68 272 132 C 252 118 222 108 188 104 C 195 70 176 38 150 20 Z" />
+  </g>
+</svg>

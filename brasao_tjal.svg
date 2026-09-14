@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 330" width="240" height="330">
+  <defs>
+    <style>
+      .tjal-text-poder {
+        font-family: 'Liberation Serif', 'Times New Roman', serif;
+        font-size: 32px;
+        font-weight: 500;
+        fill: #06313c;
+        letter-spacing: 0.22em;
+        text-anchor: middle;
+      }
+      .tjal-text-judiciario {
+        font-family: 'Liberation Serif', 'Times New Roman', serif;
+        font-size: 26px;
+        font-weight: 500;
+        fill: #06313c;
+        letter-spacing: 0.12em;
+        text-anchor: middle;
+      }
+      .tjal-text-alagoas {
+        font-family: 'Liberation Serif', 'Times New Roman', serif;
+        font-size: 20px;
+        font-weight: 400;
+        fill: #06313c;
+        letter-spacing: 0.26em;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <!-- Circular Emblem -->
+  <g transform="translate(120, 95)">
+    <!-- Solid base circle -->
+    <circle cx="0" cy="0" r="78" fill="#06313c" />
+
+    <!-- Negative space cutouts (white) -->
+    <!-- 1. Upper side cutouts (between outer circle and center arch) -->
+    <!-- Left upper cutout -->
+    <path d="M -15 -74 C -45 -65 -65 -40 -71 -10 C -52 -18 -32 -20 -15 -20 Z" fill="#ffffff" />
+    <!-- Right upper cutout -->
+    <path d="M 15 -74 C 45 -65 65 -40 71 -10 C 52 -18 32 -20 15 -20 Z" fill="#ffffff" />
+
+    <!-- 2. Lower curved separator channel -->
+    <path d="M -68 15 C -45 42 45 42 68 15 C 50 32 -50 32 -68 15 Z" fill="#ffffff" />
+
+    <!-- 3. Left scale strings & dish cutout -->
+    <path d="M -22 -12 L -60 12 M -22 -12 L -34 12 M -62 12 L -32 12" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 4. Right scale strings & dish cutout -->
+    <path d="M 22 -12 L 60 12 M 22 -12 L 34 12 M 62 12 L 32 12" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 5. Central Spire / Needles vertical slits -->
+    <!-- Center white slit -->
+    <line x1="0" y1="-72" x2="0" y2="16" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <!-- Flanking left slit -->
+    <line x1="-7.5" y1="-62" x2="-7.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+    <!-- Flanking right slit -->
+    <line x1="7.5" y1="-62" x2="7.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+
+    <!-- 6. Bottom anchor cutout & flare -->
+    <path d="M 0 16 C -8 38 -20 56 -35 68 C -15 62 15 62 35 68 C 20 56 8 38 0 16 Z" fill="#ffffff" />
+    <!-- Anchor bottom center spear (dark inside the white cutout) -->
+    <path d="M 0 20 C -4 40 -12 55 -24 64 C -8 58 8 58 24 64 C 12 55 4 40 0 20 Z" fill="#06313c" />
+  </g>
+
+  <!-- Typography below the circle -->
+  <text x="120" y="215" class="tjal-text-poder">PODER</text>
+  <text x="120" y="248" class="tjal-text-judiciario">JUDICIÁRIO</text>
+  <text x="120" y="278" class="tjal-text-alagoas">DE ALAGOAS</text>
+</svg>
