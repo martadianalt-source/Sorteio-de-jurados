@@ -24,16 +24,6 @@ export interface DrawSession {
   frozenAt?: string;
 }
 
-export interface TjalAuthUser {
-  name: string;
-  email: string;
-  domain: string;
-  cargo?: string;
-  picture?: string;
-  authenticatedAt: string;
-  googleVerified?: boolean;
-}
-
 export interface AuditLogEntry {
   id: string;
   timestamp: string;

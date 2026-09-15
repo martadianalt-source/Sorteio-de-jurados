@@ -1,13 +1,11 @@
 import React from 'react';
-import { Scale, FileSpreadsheet, Printer, ShieldCheck, Upload, Settings, ChevronDown, MapPin, User, LogOut } from 'lucide-react';
-import { ComarcaInfo, DrawSession, TjalAuthUser } from '../types';
+import { Scale, FileSpreadsheet, Printer, ShieldCheck, Upload, Settings, ChevronDown, MapPin } from 'lucide-react';
+import { ComarcaInfo, DrawSession } from '../types';
 
 interface HeaderProps {
   comarcaInfo: ComarcaInfo;
   session: DrawSession | null;
   jurorsCount: number;
-  authUser?: TjalAuthUser | null;
-  onLogout?: () => void;
   onOpenImport: () => void;
   onExportExcel: () => void;
   onPrintAta: () => void;
@@ -20,8 +18,6 @@ export const Header: React.FC<HeaderProps> = ({
   comarcaInfo,
   session,
   jurorsCount,
-  authUser,
-  onLogout,
   onOpenImport,
   onExportExcel,
   onPrintAta,
@@ -138,32 +134,6 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Settings className="w-4 h-4" />
             </button>
-
-            {authUser && (
-              <div className="flex items-center gap-1.5 pl-2 border-l border-neutral-200">
-                <div
-                  className="flex items-center gap-1.5 px-2 py-1 bg-neutral-100 border border-neutral-200 rounded-md text-xs text-neutral-800 max-w-[210px]"
-                  title={`Usuário autenticado: ${authUser.name} (${authUser.email})`}
-                >
-                  <User className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                  <div className="flex flex-col truncate text-left">
-                    <span className="font-semibold text-[11px] truncate leading-tight">{authUser.name}</span>
-                    <span className="text-[10px] text-neutral-500 truncate leading-tight font-mono">{authUser.email}</span>
-                  </div>
-                </div>
-
-                {onLogout && (
-                  <button
-                    type="button"
-                    onClick={onLogout}
-                    className="p-1.5 text-neutral-500 hover:text-rose-700 hover:bg-rose-50 border border-neutral-200 hover:border-rose-300 rounded-md transition-colors cursor-pointer"
-                    title="Encerrar sessão institucional (@tjal.jus.br)"
-                  >
-                    <LogOut className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </div>

@@ -29,7 +29,22 @@ export interface DrawDateDetails {
 }
 
 export function getDrawDateDetails(timestamp?: string): DrawDateDetails {
-  const date = timestamp ? new Date(timestamp) : new Date();
+  let date = new Date();
+  if (timestamp) {
+    const parsed = new Date(timestamp);
+    if (!isNaN(parsed.getTime())) {
+      date = parsed;
+    } else {
+      const match = timestamp.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[,\s]+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/);
+      if (match) {
+        const [, d, m, y, h, min, s] = match;
+        const customDate = new Date(Number(y), Number(m) - 1, Number(d), Number(h || 0), Number(min || 0), Number(s || 0));
+        if (!isNaN(customDate.getTime())) {
+          date = customDate;
+        }
+      }
+    }
+  }
 
   const currentDay = String(date.getDate()).padStart(2, '0');
   const currentMonthIdx = date.getMonth();

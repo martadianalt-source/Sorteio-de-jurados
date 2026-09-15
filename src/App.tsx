@@ -10,14 +10,12 @@ import { ConfigModal } from './components/ConfigModal';
 import { PrintAtaView } from './components/PrintAtaView';
 import { SavedListsModal } from './components/SavedListsModal';
 import { TjalComarcaSelectorModal } from './components/TjalComarcaSelectorModal';
-import { TjalAuthGate } from './components/TjalAuthGate';
 import { INITIAL_JURORS, DEFAULT_COMARCA_INFO } from './data/initialJurors';
-import { Juror, DrawnJuror, DrawSession, AuditLogEntry, ComarcaInfo, SavedJurorList, TjalAuthUser } from './types';
+import { Juror, DrawnJuror, DrawSession, AuditLogEntry, ComarcaInfo, SavedJurorList } from './types';
 import { secureShuffle, sha256 } from './utils/crypto';
 import { formatAtaText, exportToExcel } from './utils/exporter';
 import { AlertCircle, CheckCircle2, Lock, Shield, Sparkles } from 'lucide-react';
 
-const STORAGE_KEY_AUTH = 'tjal_authenticated_user_v1';
 const STORAGE_KEY_LISTS = 'tribunal_saved_juror_lists_tapera';
 const STORAGE_KEY_ACTIVE = 'tribunal_active_juror_list_info';
 const STORAGE_KEY_COMARCA = 'tribunal_comarca_info_tapera';
@@ -152,19 +150,6 @@ function getStoredComarcaInfo(): ComarcaInfo {
 }
 
 export default function App() {
-  const [authUser, setAuthUser] = useState<TjalAuthUser | null>(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY_AUTH);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed?.email && parsed.email.endsWith('@tjal.jus.br')) {
-          return parsed;
-        }
-      }
-    } catch {}
-    return null;
-  });
-
   const [comarcaInfo, setComarcaInfo] = useState<ComarcaInfo>(getStoredComarcaInfo);
 
   // Load the official list for the selected Vara
@@ -460,30 +445,6 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleCopy, session]);
-
-  // TJAL Authentication Handlers
-  const handleLoginSuccess = (user: TjalAuthUser) => {
-    setAuthUser(user);
-    try {
-      localStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(user));
-    } catch {}
-    showToast('success', `Bem-vindo(a), ${user.name}! Autenticado com sucesso.`);
-    appendAuditLog('USER_LOGIN', `Acesso autenticado com conta institucional Google (@tjal.jus.br): ${user.email} (${user.name}).`, {
-      email: user.email,
-      domain: user.domain,
-    });
-  };
-
-  const handleLogout = () => {
-    if (authUser) {
-      appendAuditLog('USER_LOGOUT', `Logout do usuário ${authUser.email}.`);
-    }
-    setAuthUser(null);
-    try {
-      localStorage.removeItem(STORAGE_KEY_AUTH);
-    } catch {}
-    showToast('info', 'Sessão institucional finalizada.');
-  };
 
   // Juror Pool Management & List Persistence (1 Official List per Vara)
   const handleAddJuror = async (name: string, qualification: string) => {
@@ -821,11 +782,6 @@ export default function App() {
     [comarcaInfo]
   );
 
-  // Authentication Gate: Require user to be authenticated with @tjal.jus.br Google Account
-  if (!authUser) {
-    return <TjalAuthGate onLoginSuccess={handleLoginSuccess} />;
-  }
-
   return (
     <div className="min-h-screen bg-neutral-100 flex flex-col selection:bg-neutral-800 selection:text-white">
       {/* Top Application Header */}
@@ -833,8 +789,6 @@ export default function App() {
         comarcaInfo={comarcaInfo}
         session={session}
         jurorsCount={jurors.length}
-        authUser={authUser}
-        onLogout={handleLogout}
         onOpenImport={() => setIsImportOpen(true)}
         onExportExcel={handleExportExcel}
         onPrintAta={() => {
