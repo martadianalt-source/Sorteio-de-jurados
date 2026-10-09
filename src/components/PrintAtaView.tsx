@@ -254,15 +254,9 @@ export const PrintAtaView: React.FC<PrintAtaViewProps> = ({
     const pdfFileName = `Ata_Sorteio_Jurados_${comarcaSlug}_${cleanMonth}_${nextMonthYear}.pdf`;
 
     try {
-      // 1. Gera o PDF vetorial canônico diretamente da AtaDocumentStructure (garante fidelidade tipográfica)
+      // Gera o download direto do PDF canônico vetorial
       exportAtaDocumentToDirectPdf(canonicalDoc, pdfFileName);
-
       setPdfToast(true);
-
-      // 2. Tenta invocar diálogo de impressão do navegador como complemento
-      try {
-        executePrint();
-      } catch {}
     } catch (err) {
       console.error('Erro ao gerar PDF canônico, tentando fallback visual:', err);
       const el = document.getElementById('printable-court-document');
